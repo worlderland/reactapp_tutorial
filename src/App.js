@@ -1,24 +1,55 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './components/Header'
+import TableRow from './components/TableRow';
 import './App.css';
 
-function App() {
-  var i = 2;
-  var myStyle = {
-    fontSize: 100,
-    color: 'red'
-
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      data:
+        [
+          {
+            "id": 1,
+            "name": "Foo",
+            "age": "20"
+          },
+          {
+            "id": 2,
+            "name": "Bar",
+            "age": "30"
+          },
+          {
+            "id": 3,
+            "name": "Baz",
+            "age": "40"
+          },
+          {
+            "id": 4,
+            "name": "Hey",
+            "age": "50"
+          },
+          {
+            "id": 3,
+            "name": "Bob",
+            "age": "60"
+          }
+        ]
+    }
   }
-  return (
-    <div>
-      <h1 style = {myStyle}>Header</h1> {/*This is a comment*/}
-      <h2>Content</h2>
-      <p data-mayattribute = "somevalue">This is the content!!!</p>
-      <h3>{1+1}</h3>
-      <h4>{i == 1 ? 'True' : 'False'}</h4>
-      
-      {/*End of block comment*/}
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <Header/>
+        <table>
+          <tbody>
+            {this.state.data.map((person, i) => <TableRow key={i}
+              data={person} />)}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
 
 export default App;
