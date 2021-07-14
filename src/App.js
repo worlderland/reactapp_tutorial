@@ -1,24 +1,23 @@
 import React from 'react';
-import Header from './components/Header'
-import Content from './components/Content';
 import './App.css';
+import ReactDOM from 'react-dom';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      content: "Content a component and a prop setup in app.js..."
-    }
+  constructor() {
+    super();
+    this.findDomNodeHandler = this.findDomNodeHandler.bind(this);
+  };
+  findDomNodeHandler() {
+    var myDiv = document.getElementById('myDiv');
+    ReactDOM.findDOMNode(myDiv).style.color = 'green';
   }
-  
   render() {
     return (
       <div>
-        <Header headerProp="Header from Prop" />
-        <Content contentProp={this.state.content} />
+        <button onClick={this.findDomNodeHandler}>FIND DOME NODE</button>
+        <div id="myDiv">NODE</div>
       </div>
     );
   }
 }
-
 export default App;
