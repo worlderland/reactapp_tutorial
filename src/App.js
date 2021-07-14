@@ -1,37 +1,25 @@
-import React from 'react';
-import { Router, Route } from 'react-router'
-import { useHistory } from 'react-router';
-import Home from './components/Home';
-import About from './components/About';
-import Contact from './components/Contact';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from './actions/actions'
 
-class App extends React.Component {
+import AddTodo from './components/AddToDo'
+import TodoList from './components/ToDoList'
+
+class App extends Component {
   render() {
+    const { dispatch, visibleTodos } = this.props
+
     return (
       <div>
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-        {this.props.children}
+        <AddTodo onAddClick={text => dispatch(addTodo(text))} />
+        <TodoList todos={visibleTodos} />
       </div>
     )
   }
 }
-
-function Routes() {
-  const history= useHistory()
-
-    return (
-      <Router history={history}>
-        <Route path="/" component={App}>
-          <Route path="home" component={Home} />
-          <Route path="about" component={About} />
-          <Route path="contact" component={Contact} />
-        </Route>
-      </Router>
-    )
+function select(state) {
+  return {
+    visibleTodos: state.todos
+  }
 }
-
-export default Routes
+export default connect(select)(App);
