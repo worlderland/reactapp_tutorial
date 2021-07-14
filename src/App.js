@@ -1,52 +1,21 @@
 import React from 'react';
 import Header from './components/Header'
-import TableRow from './components/TableRow';
+import Content from './components/Content';
 import './App.css';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      data:
-        [
-          {
-            "id": 1,
-            "name": "Foo",
-            "age": "20"
-          },
-          {
-            "id": 2,
-            "name": "Bar",
-            "age": "30"
-          },
-          {
-            "id": 3,
-            "name": "Baz",
-            "age": "40"
-          },
-          {
-            "id": 4,
-            "name": "Hey",
-            "age": "50"
-          },
-          {
-            "id": 3,
-            "name": "Bob",
-            "age": "60"
-          }
-        ]
+      content: "Content a component and a prop setup in app.js..."
     }
   }
+  
   render() {
     return (
       <div>
-        <Header/>
-        <table>
-          <tbody>
-            {this.state.data.map((person, i) => <TableRow key={i}
-              data={person} />)}
-          </tbody>
-        </table>
+        <Header headerProp="Header from Prop" />
+        <Content contentProp={this.state.content} />
       </div>
     );
   }

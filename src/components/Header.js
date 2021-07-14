@@ -1,22 +1,17 @@
 import React from 'react';
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            header: "Header from state...",
-            content: "Content from state..."
-        }
-    }
     render() {
         return (
             <div>
-                <h1>{this.state.header}</h1>
-                <h2>{this.state.content}</h2>
+                <h1>{this.props.headerProp}</h1>
             </div>
         );
     }
+}
+
+Header.defaultProps = {
+    headerProp: "This is a default Header Prop",
 }
 
 export default Header
