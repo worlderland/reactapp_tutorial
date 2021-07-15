@@ -1,24 +1,14 @@
 import React from 'react';
-import App from './App';
-
+import ReactDOM from 'react-dom';
 import './index.css';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-
-import todoApp from './reducers/reducers'
-
-let store = createStore(todoApp)
-let rootElement = document.getElementById('app')
-
-render(
-  <Provider store={store}>
+ReactDOM.render(
+  <React.StrictMode>
     <App />
-  </Provider>,
-
-  rootElement
+  </React.StrictMode>,
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
